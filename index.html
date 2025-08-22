@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Meal Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>G-woods and Special Sauce</h1>
+            <p>Weekly Family Meal Plan</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="planner">Weekly Plan</button>
+            <button class="tab-btn" data-tab="recipes">Recipes</button>
+            <button class="tab-btn" data-tab="shopping">Shopping List</button>
+        </nav>
+
+        <!-- Weekly Planner Tab -->
+        <div id="planner" class="tab-content active">
+            <div class="week-grid">
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-sunday" class="day-checkbox" checked>
+                        <label for="select-sunday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Sunday (Batch Cook)</h3>
+                    </div>
+                    <div class="meal-slot batch-meal" data-day="sunday">
+                        <span class="placeholder">+ Add Sunday Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-monday" class="day-checkbox" checked>
+                        <label for="select-monday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Monday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="monday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-tuesday" class="day-checkbox" checked>
+                        <label for="select-tuesday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Tuesday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="tuesday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-wednesday" class="day-checkbox" checked>
+                        <label for="select-wednesday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Wednesday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="wednesday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-thursday" class="day-checkbox" checked>
+                        <label for="select-thursday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Thursday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="thursday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-friday" class="day-checkbox" checked>
+                        <label for="select-friday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Friday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="friday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+                
+                <div class="day-column">
+                    <div class="day-header">
+                        <input type="checkbox" id="select-saturday" class="day-checkbox" checked>
+                        <label for="select-saturday" class="day-checkbox-label">
+                            <span class="day-checkmark">✓</span>
+                        </label>
+                        <h3>Saturday</h3>
+                    </div>
+                    <div class="meal-slot" data-day="saturday">
+                        <span class="placeholder">+ Add Meal</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="generate-selected-days-list" class="btn primary">🛒 Generate Shopping List</button>
+                <button id="save-week" class="btn secondary">💾 Save This Week</button>
+                <button id="load-saved-week" class="btn secondary">📂 Load Saved Week</button>
+            </div>
+        </div>
+
+        <!-- Recipes Tab -->
+        <div id="recipes" class="tab-content">
+            <div class="recipe-actions">
+                <button id="suggest-recipe" class="btn primary">💡 Suggest New Recipe</button>
+                <button id="add-custom-recipe" class="btn primary">➕ Add My Recipe</button>
+                <button id="load-suggested-plan" class="btn secondary">📋 Load Sample Week</button>
+                <button id="generate-custom-shopping-list" class="btn primary">🛒 Shopping List from Selected</button>
+            </div>
+            
+            <div class="recipe-categories">
+                <div class="recipe-section">
+                    <h3><span class="bounce-emoji">🍲</span> Sunday Batch Cooking <span class="bounce-emoji">🍲</span></h3>
+                    <div id="batch-recipes" class="recipe-grid"></div>
+                </div>
+                
+                <div class="recipe-section">
+                    <h3><span class="bounce-emoji">⚡</span> Quick Weeknight Meals <span class="bounce-emoji">⚡</span></h3>
+                    <div id="quick-recipes" class="recipe-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopping List Tab -->
+        <div id="shopping" class="tab-content">
+            <div class="shopping-header">
+                <h3><span class="wiggle-emoji">🛒</span> Shopping List <span class="wiggle-emoji">🥬</span></h3>
+                <button id="share-list" class="btn secondary">Share List</button>
+            </div>
+            <div id="shopping-list" class="shopping-list">
+                <p class="empty-state">Generate a shopping list from your weekly plan!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
